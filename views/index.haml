@@ -1,0 +1,12 @@
+!!!
+%html
+    %head
+        %title Lisst
+    %body
+        %header Header
+        %h1 Test
+        - @listItems.each do |item| 
+            .item
+                - item.each do |detail|
+                    .detail= detail
+        %footer Footer
