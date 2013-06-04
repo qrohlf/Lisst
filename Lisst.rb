@@ -1,7 +1,12 @@
 require 'sinatra'
+require "sinatra/config_file"
 require 'haml'
 
+config_file 'config.yml'
+
 get '/' do
+	@title = settings.title
+	@footer = settings.footer
   @list = List.new("list.txt");
   haml :index
 end
@@ -19,7 +24,6 @@ delete '/:item' do
 end
 
 class List
-	extend Forwardable
 	def initialize(path) 
 		@file = File.new(path, "r+")
 	end

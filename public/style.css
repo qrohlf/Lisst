@@ -1,0 +1,83 @@
+/* =Le CSS Reset 
+====================================*/
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+html {
+	width: 100%;
+	overflow: auto;
+	min-height: 100%;
+	background: #e2e2e2;
+	color: #585858;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+
+/*=Basic Layout and Alignment
+====================================*/
+header, footer {
+	text-align: center;
+}
+
+.item {
+	margin: 15px 10px;
+	display: table;
+	width: calc(100% - 20px - 6px);
+	background: #FFF;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, .2)
+}
+
+@media (min-width: 706px) {
+	.item {
+		width: 680px;
+		margin: 15px auto;
+	}
+}
+
+.detail {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.detail.title {
+	font-size: 1.6em;
+	line-height: 1.2em;
+	width: 45%;
+}
+
+.detail.content {
+	width: 55%;
+}
+
+/*=Global Typographic styles 
+======================================*/
+
+a, a:hover, a:active {
+	color: #FE4365;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 2em;
+	line-height: 2em;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+p {
+	margin: 1em 0;
+}

@@ -1,7 +1,4 @@
-%header Header
-%h1 Test
 - @list.each do |item| 
     .item
-        - item.each do |detail|
-            .detail= detail
-%footer Footer
+        .detail.title=item[0]
+        .detail.content=item[1]
