@@ -6,7 +6,6 @@ config_file 'config.yml'
 
 get '/' do
 	@title = settings.title
-	@footer = settings.footer
   @list = List.new("list.txt");
   haml :index
 end
