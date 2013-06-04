@@ -8,6 +8,7 @@ before :method => 'get' do
 	@title = settings.title
 	@list = List.new("list.txt")
 	@modernizr = File.read("include/modernizr.js")
+	@order = settings.order
 end
 
 get '/' do
@@ -21,7 +22,8 @@ get '/edit' do
 end
 
 post '/' do
-	# add item to list
+	@list.create(params[:title], params[:content])
+	redirect('/edit')
 end
 
 put '/' do
@@ -34,17 +36,26 @@ end
 
 class List
 	def initialize(path) 
-		@file = File.new(path, "r+")
+		@file = File.new(path, "a+")
+		@file.sync = true
 	end
 
 	def each(&block)
-		@file.each do |line|
-			yield line.split(' : ')
+		@file.each_with_index do |line, index|
+			yield line.split(' : ').push(index)
 		end
 	end
 
-	def create(index, title, content)
-		#add an item to the list
+	def reverse_each(&block)
+		lines = @file.readlines
+		size = lines.count
+		lines.reverse.each_with_index do |line, index|
+			yield line.split(' : ').push(size - index)
+		end
+	end
+
+	def create(title, content)
+		@file.puts title+" : "+content
 	end
 
 	def update(index, title, content)

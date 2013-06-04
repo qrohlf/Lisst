@@ -123,6 +123,11 @@ input {
 	color: inherit;
 }
 
+input[type='submit'] {
+	visibility: hidden;
+	position: absolute;
+}
+
 /*=Icons vis IcoMoon
 =======================================*/
 @font-face {

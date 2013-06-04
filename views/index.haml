@@ -1,4 +1,10 @@
-- @list.each do |item| 
-    .item
-        .detail.title=item[0]
-        .detail.content=item[1]
+- if(@order == 'inverse') 
+    - @list.reverse_each do |item| 
+        .item
+            .detail.title=item[0]
+            .detail.content=item[1]
+- else
+    - @list.each do |item| 
+        .item
+            .detail.title=item[0]
+            .detail.content=item[1]
