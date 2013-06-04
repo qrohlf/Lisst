@@ -93,18 +93,18 @@ p {
 
 .action-delete {
 	opacity: 0;
-	-webkit-transition: all .5s ease;
-	-moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-	transition: all .5s ease;
+	-webkit-transition: opacity .5s ease;
+	-moz-transition: opacity .5s ease;
+    -ms-transition: opacity .5s ease;
+    -o-transition: opacity .5s ease;
+	transition: opacity .5s ease;
 	transition-delay: 20;
 	-webkit-transition-delay: 20; /* Safari */
 }
 
 .item:hover .action-delete,
 .item:active .action-delete,
-.item:focus .action-delete {
+html.touch .action-delete {
 	opacity: 1;
 }
 
