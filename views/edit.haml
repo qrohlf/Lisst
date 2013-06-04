@@ -1,7 +1,9 @@
 .item.new
     %span.action-new(data-icon="m")
-    .detail.title(contenteditable="true")
-    .detail.content(contenteditable="true")
+    .detail.title
+        %input(placeholder="New Item")
+    .detail.content
+        %input(placeholder="Description")
 - @list.each do |item| 
     .item
         %span.action-move(data-icon="o")

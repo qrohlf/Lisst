@@ -116,21 +116,12 @@ html.touch .action-new {
 	line-height: 32px;
 }
 
-.item.new .detail {
-	position: relative;
+input {
+	border: none;
+	outline: none;
+	font-size: inherit;
+	color: inherit;
 }
-
-.item.new .detail:after {
-	height: 1px;
-	content: "";
-	display: block;
-	background: #a4a4a4;
-	width: calc(100% - 30px);
-	position: absolute;
-	left: 10px;
-	bottom: 10px;
-}
-
 
 /*=Icons vis IcoMoon
 =======================================*/

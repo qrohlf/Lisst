@@ -15,6 +15,8 @@ get '/' do
 end
 
 get '/edit' do
+	@editjs = File.read("include/edit.js")
+	@jquery = true
 	haml :edit
 end
 
