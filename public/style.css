@@ -42,6 +42,7 @@ header, footer {
 	display: table-cell;
 	vertical-align: middle;
 	padding: 10px;
+	word-wrap: break-word;
 }
 
 .detail.title {
@@ -51,7 +52,6 @@ header, footer {
 }
 
 .detail.content {
-	width: 55%;
 }
 
 /*=Global Typographic styles 
@@ -85,9 +85,10 @@ p {
 /*=Edit-specific styles 
 ====================================*/
 
-.action-move, .action-delete {
+.action-move, .action-delete, .action-new {
 	display: table-cell;
 	vertical-align: middle;
+	width: 1px; /* Hack to force table cells to fit contents */
 	padding: 10px;
 }
 
@@ -108,9 +109,26 @@ html.touch .action-delete {
 	opacity: 1;
 }
 
-html.touch .action-move, html.touch .action-delete {
+html.touch .action-move, 
+html.touch .action-delete,
+html.touch .action-new {
 	font-size: 32px;
 	line-height: 32px;
+}
+
+.item.new .detail {
+	position: relative;
+}
+
+.item.new .detail:after {
+	height: 1px;
+	content: "";
+	display: block;
+	background: #a4a4a4;
+	width: calc(100% - 30px);
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
 }
 
 
