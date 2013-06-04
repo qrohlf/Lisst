@@ -103,7 +103,8 @@ p {
 }
 
 .item:hover .action-delete,
-.item:active .action-delete {
+.item:active .action-delete,
+.item:focus .action-delete {
 	opacity: 1;
 }
 
