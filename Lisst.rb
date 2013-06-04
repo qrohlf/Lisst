@@ -41,17 +41,21 @@ class List
 	end
 
 	def each(&block)
-		@file.each_with_index do |line, index|
-			yield line.split(' : ').push(index)
-		end
+		Enumerator.new do |out|
+			@file.each_with_index do |line, index|
+				out.yield line.split(' : ').push(index + 1)
+			end
+		end.each(&block)
 	end
 
 	def reverse_each(&block)
-		lines = @file.readlines
-		size = lines.count
-		lines.reverse.each_with_index do |line, index|
-			yield line.split(' : ').push(size - index)
-		end
+		Enumerator.new do |out|
+			lines = @file.readlines
+			size = lines.count
+			lines.reverse.each_with_index do |line, index|
+				out.yield line.split(' : ').push(size - index)
+			end
+		end.each(&block)
 	end
 
 	def create(title, content)
