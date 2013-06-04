@@ -4,10 +4,18 @@ require 'haml'
 
 config_file 'config.yml'
 
-get '/' do
+before :method => 'get' do
 	@title = settings.title
-  @list = List.new("list.txt");
+	@list = List.new("list.txt")
+	@modernizr = File.read("include/modernizr.js")
+end
+
+get '/' do
   haml :index
+end
+
+get '/edit' do
+	haml :edit
 end
 
 post '/' do

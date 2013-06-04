@@ -45,8 +45,8 @@ header, footer {
 }
 
 .detail.title {
-	font-size: 1.6em;
-	line-height: 1.2em;
+	font-size: 24px;
+	line-height: 32px;
 	width: 45%;
 }
 
@@ -66,8 +66,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 2em;
-	line-height: 2em;
+	font-size: 32px;
+	line-height: 48px;
 }
 
 strong {
@@ -80,4 +80,63 @@ em {
 
 p {
 	margin: 1em 0;
+}
+
+/*=Edit-specific styles 
+====================================*/
+
+.action-move, .action-delete {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.action-delete {
+	opacity: 0;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+	transition: all .5s ease;
+	transition-delay: 20;
+	-webkit-transition-delay: 20; /* Safari */
+}
+
+.item:hover .action-delete,
+.item:active .action-delete {
+	opacity: 1;
+}
+
+html.touch .action-move, html.touch .action-delete {
+	font-size: 32px;
+	line-height: 32px;
+}
+
+
+/*=Icons vis IcoMoon
+=======================================*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.px-32[data-icon] {
+	font-size: 32px;
+	line-height: 32px;
 }
