@@ -25,7 +25,6 @@ header, footer {
 
 .item {
 	margin: 15px 10px;
-	display: table;
 	width: calc(100% - 20px - 6px);
 	background: #FFF;
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, .2)
@@ -38,20 +37,28 @@ header, footer {
 	}
 }
 
+@media (max-width: 320px) {
+    .item {
+		width: 290px;
+		margin: 15px auto;
+	}
+}
+
 .detail {
-	display: table-cell;
-	vertical-align: middle;
+	display: inline-block;
 	padding: 10px;
 	word-wrap: break-word;
+    vertical-align: middle;
 }
 
 .detail.title {
 	font-size: 24px;
 	line-height: 32px;
-	width: 45%;
+	width: calc(44% - 20px);
 }
 
 .detail.content {
+    width: calc(54% - 20px);
 }
 
 /*=Global Typographic styles 

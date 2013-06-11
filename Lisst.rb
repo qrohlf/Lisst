@@ -31,6 +31,7 @@ put '/' do
 end
 
 delete '/:item' do
+    @list.delete(params[:item]);
 	# delete item from the list
 end
 
@@ -67,7 +68,7 @@ class List
 	end
 
 	def delete(index)
-		#delete an item from the list
+		"deleting "+index
 	end
 	
 end
