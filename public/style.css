@@ -3,6 +3,9 @@
 /* html5doctor.com Reset v1.6.1 - http://cssreset.com */
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
 
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 html {
 	width: 100%;
 	overflow: auto;
@@ -15,6 +18,8 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 1.25em;
+	margin: 6px;
+	min-width: 308px;
 }
 
 /*=Basic Layout and Alignment
@@ -25,21 +30,14 @@ header, footer {
 
 .item {
 	margin: 15px 10px;
-	width: calc(100% - 20px - 6px);
+	width: calc(100% - 20px);
 	background: #FFF;
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, .2)
 }
 
-@media (min-width: 706px) {
+@media (min-width: 712px) {
 	.item {
 		width: 680px;
-		margin: 15px auto;
-	}
-}
-
-@media (max-width: 320px) {
-    .item {
-		width: 290px;
 		margin: 15px auto;
 	}
 }
@@ -93,9 +91,8 @@ p {
 ====================================*/
 
 .action-move, .action-delete, .action-new {
-	display: table-cell;
+	display: inline-block;
 	vertical-align: middle;
-	width: 1px; /* Hack to force table cells to fit contents */
 	padding: 10px;
 }
 

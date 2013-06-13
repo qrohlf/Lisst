@@ -1,14 +1,28 @@
 require 'sinatra'
 require "sinatra/config_file"
 require 'haml'
+require 'sinatra/activerecord'
+require 'uri'
+require './models/ListItem'
 
 config_file 'config.yml'
 
+db = URI.parse(ENV['DATABASE_URL'])
+
+ActiveRecord::Base.establish_connection(
+  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  :host     => db.host,
+  :port     => db.port,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'utf8'
+)
+
 before :method => 'get' do
 	@title = settings.title
-	@list = List.new("list.txt")
-	@modernizr = File.read("include/modernizr.js")
-	@order = settings.order
+	@list = ListItem.all
+	@modernizr = File.read("include/modernizr.js") #this is silly, need to fix
 end
 
 get '/' do
@@ -22,11 +36,11 @@ get '/edit' do
 end
 
 post '/' do
-	@list.create(params[:title], params[:content])
-	redirect('/edit')
+	ListItem.create(params)
+	redirect("/edit")
 end
 
-put '/' do
+put '/:item' do
 	#update item in list
 end
 

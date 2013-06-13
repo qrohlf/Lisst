@@ -11,8 +11,8 @@
 - else
     - @items = @list.each
 - @items.each do |item| 
-    .item{'data-line' => item.last}
+    .item{'data-line' => item.id}
         %span.action-move(data-icon="o")
-        .detail.title=item[0]
-        .detail.content=item[1]
+        .detail.title=item.title
+        .detail.content=item.title
         %span.action-delete(data-icon="d")
