@@ -52,11 +52,11 @@ header, footer {
 .detail.title {
 	font-size: 24px;
 	line-height: 32px;
-	width: calc(44% - 20px);
+	width: 30%;
 }
 
 .detail.content {
-    width: calc(54% - 20px);
+    width: 60%;
 }
 
 /*=Global Typographic styles 
@@ -91,9 +91,15 @@ p {
 ====================================*/
 
 .action-move, .action-delete, .action-new {
-	display: inline-block;
 	vertical-align: middle;
+}
+
+.action-new {
 	padding: 10px;
+}
+
+.action-delete {
+
 }
 
 .action-delete {

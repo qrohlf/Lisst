@@ -12,7 +12,9 @@
     - @items = @list.each
 - @items.each do |item| 
     .item{'data-line' => item.id}
-        %span.action-move(data-icon="o")
-        .detail.title=item.title
-        .detail.content=item.title
-        %span.action-delete(data-icon="d")
+        .detail.title
+            %span.action-move(data-icon="o")
+            =item.title
+        .detail.content
+            =item.title
+            %span.action-delete(data-icon="d")

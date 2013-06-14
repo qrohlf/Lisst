@@ -4,6 +4,7 @@ require 'haml'
 require 'sinatra/activerecord'
 require 'uri'
 require './models/ListItem'
+require 'omniauth'
 
 config_file 'config.yml'
 
