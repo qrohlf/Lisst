@@ -7,7 +7,5 @@ gem "sinatra-activerecord"
 gem "pg"
 gem "omniauth"
 gem 'omniauth-google'
-
-group :development do
-  gem "shotgun"
-end
+gem 'tux'
+gem "shotgun"
