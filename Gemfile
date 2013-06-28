@@ -8,4 +8,3 @@ gem "pg"
 gem "omniauth"
 gem 'omniauth-google'
 gem 'tux'
-gem "shotgun"
