@@ -5,6 +5,8 @@ require 'sinatra/activerecord'
 require 'uri'
 require './models/ListItem'
 require 'omniauth'
+require 'omniauth-google-oauth2'
+require 'pp'
 
 config_file 'config.yml'
 
@@ -20,6 +22,17 @@ ActiveRecord::Base.establish_connection(
   :encoding => 'utf8'
 )
 
+use Rack::Session::Cookie
+use OmniAuth::Builder do
+  provider :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"],
+    {
+      :scope => "userinfo.email",
+      #:prompt => "select_account",
+      :image_aspect_ratio => "square",
+      :image_size => 50
+    }
+end
+
 before :method => 'get' do
 	@title = settings.title
 	@list = ListItem.all(order: 'id DESC')
@@ -30,13 +43,12 @@ get '/' do
 end
 
 get '/edit' do
-	@editjs = File.read("include/edit.js")
+    redirect("/unauthorized") unless can_edit
     @jquery = true
 	haml :edit
 end
 
 post '/' do
-	redirect('/');
 	ListItem.create(params)
 	redirect("/edit")
 end
@@ -49,4 +61,24 @@ delete '/:item' do
 	redirect('/');
     @list.delete(params[:item]);
 	# delete item from the list
+end
+
+get '/auth/google_oauth2/callback' do
+    session[:auth] = request.env['omniauth.auth']
+    redirect(request.env['omniauth.origin'])
+end
+
+get '/logout' do 
+    session.clear
+    redirect('/')
+end
+
+get '/unauthorized' do 
+    haml :unauthorized
+end
+
+def can_edit
+    auth = session[:auth]
+    redirect("/auth/google_oauth2?origin=#{URI.escape request.fullpath}") if auth.nil?
+    settings.can_edit.include? auth[:info][:email]
 end

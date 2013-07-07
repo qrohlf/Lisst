@@ -1,20 +1,11 @@
 .item.new
     %form#form-new(action="/" method="post")
-        %span.action-new(data-icon="m" onClick="addItem();")
         .detail.title
             %input(type="text" name="title" placeholder="New Item")
         .detail.content
             %input(type="text" name="content" placeholder="Description")
         %input(type="submit")
-- if(@order == 'inverse') 
-    - @items = @list.reverse_each
-- else
-    - @items = @list.each
-- @items.each do |item| 
+- @list.each do |item| 
     .item{'data-line' => item.id}
-        .detail.title
-            %span.action-move(data-icon="o")
-            =item.title
-        .detail.content
-            =item.title
-            %span.action-delete(data-icon="d")
+        .detail.title=item.title
+        .detail.content=item.content

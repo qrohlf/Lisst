@@ -10,11 +10,7 @@ html {
 	width: 100%;
 	overflow: auto;
 	min-height: 100%;
-	background: url('/images/IMG_1241.jpg') no-repeat center center fixed #e2e2e2;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background: #e2e2e2;
 	color: #585858;
 }
 
@@ -39,6 +35,13 @@ header, footer {
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, .2)
 }
 
+@media (min-width: 712px) {
+	.item {
+		width: 680px;
+		margin: 15px auto;
+	}
+}
+
 .detail {
 	display: inline-block;
 	padding: 10px;
@@ -56,20 +59,6 @@ header, footer {
     width: 60%;
 }
 
-@media (min-width: 712px) {
-	.item {
-		width: 680px;
-		margin: 15px auto;
-	}
-}
-
-@media (max-width: 480px) {
-	.detail.title {
-		font-size: 18px;
-		line-height: 20px;
-	}
-}
-
 /*=Global Typographic styles 
 ======================================*/
 
@@ -84,7 +73,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 	font-size: 32px;
 	line-height: 48px;
-	/*text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.52);*/
 }
 
 strong {

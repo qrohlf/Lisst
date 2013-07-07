@@ -4,7 +4,8 @@ gem 'haml'
 gem 'sinatra-contrib'
 gem "activerecord"
 gem "sinatra-activerecord"
+gem "sqlite3"
 gem "pg"
 gem "omniauth"
-gem 'omniauth-google'
+gem "omniauth-google-oauth2"
 gem 'tux'
