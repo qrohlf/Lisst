@@ -1,3 +1,9 @@
+.info
+    %p 
+        logged in as
+        %span.user=@auth[:info][:email]
+    %p
+        %a{href: "/logout"} log out?
 .item.new
     %form#form-new(action="/" method="post")
         .detail.title

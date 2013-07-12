@@ -44,6 +44,7 @@ end
 
 get '/edit' do
     redirect("/unauthorized") unless can_edit
+    @auth = session[:auth]
     @jquery = true
 	haml :edit
 end
@@ -65,7 +66,7 @@ end
 
 get '/auth/google_oauth2/callback' do
     session[:auth] = request.env['omniauth.auth']
-    redirect(request.env['omniauth.origin'])
+    redirect(request.env['omniauth.origin'], 303)
 end
 
 get '/logout' do 
