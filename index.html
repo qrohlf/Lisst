@@ -45,14 +45,25 @@
 <li>Postgres or SQLite3 databases supported out of the box</li>
 <li>Easily extendable (built with Sinatra, ActiveRecord, and OmniAuth)</li>
 </ul><h3>
+<a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To-do</h3>
+
+<ul>
+<li>delete list items</li>
+<li>edit list items</li>
+<li>mobile-friendly list item adding</li>
+</ul><h3>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h3>
 
-<p>Tools needed: Ruby 2.0, bundler, sqlite3, heroku toolbelt (optional)</p>
+<p>Tools needed: git, ruby 2.0, bundler, sqlite3</p>
 
-<pre><code>$ 
-$ 
-$ 
+<pre><code>$ git clone https://github.com/qrohlf/Lisst.git
+$ bundle install
+$ export DATABASE_URL="sqlite3:///lisst.db" GOOGLE_SECRET="YOUR-GOOGLE-CLIENT-SECRET" GOOGLE_KEY="YOUR-GOOGLE-CLIENT-ID"
+$ rake db:migrate
+$ ruby Lisst.rb
 </code></pre>
+
+<p>Google API credentials can be obtained from <a href="https://code.google.com/apis/console/">https://code.google.com/apis/console/</a></p>
 
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
