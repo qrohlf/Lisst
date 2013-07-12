@@ -54,16 +54,6 @@ post '/' do
 	redirect("/edit")
 end
 
-put '/:item' do
-	#update item in list
-end
-
-delete '/:item' do
-	redirect('/');
-    @list.delete(params[:item]);
-	# delete item from the list
-end
-
 get '/auth/google_oauth2/callback' do
     session[:auth] = request.env['omniauth.auth']
     redirect(request.env['omniauth.origin'], 303)

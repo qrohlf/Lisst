@@ -9,6 +9,7 @@ gem "pg"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem 'tux'
+gem 'rake'
 
 group :development do
     gem "sqlite3"

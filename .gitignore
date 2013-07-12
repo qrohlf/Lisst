@@ -1,3 +1,5 @@
 *.sublime-project
 *.sublime-workspace
 development.db
+*.db
+.DS_Store
