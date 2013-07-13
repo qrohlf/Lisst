@@ -3,9 +3,6 @@
 /* html5doctor.com Reset v1.6.1 - http://cssreset.com */
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
 
-/* apply a natural box layout model to all elements */
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
 html {
 	width: 100%;
 	overflow: auto;
@@ -44,8 +41,8 @@ footer {
 }
 
 .item {
-	margin: 15px 10px;
-	width: calc(100% - 20px);
+	margin: 15px 0;
+	width: 100%;
 	background: #FFF;
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
 }
@@ -54,10 +51,16 @@ footer {
 	box-shadow: 0px 0px 3px rgba(150, 30, 0, .4);
 }
 
+.wrapper {
+	margin: 15px 10px;
+	width: -webkit-calc(100% - 20px); /* Safari 6 */
+	width: calc(100% - 20px);
+}
+
 @media (min-width: 712px) {
-	.item {
+	.wrapper {
 		width: 680px;
-		margin: 15px auto;
+		margin: 0px auto;
 	}
 }
 
@@ -71,19 +74,19 @@ footer {
 .detail.title {
 	font-size: 18px;
 	line-height: 32px;
-	width: 30%;
+	width: -webkit-calc(30% - 20px); /* Safari 6 */
+	width: calc(30% - 20px);
 }
 
 @media (min-width: 712px) {
 	.detail.title {
 		font-size: 24px;
-		line-height: 32px;
-		width: 30%;
 	}
 }
 
 .detail.content {
-    width: 60%;
+	width: -webkit-calc(60% - 20px); /* Safari 6 */
+    width: calc(60% - 20px);
 }
 
 .info {
@@ -135,53 +138,74 @@ p {
 
 /*=Edit-specific styles 
 ====================================*/
-
-.action-move, .action-delete, .action-new {
-	vertical-align: middle;
+.editable .detail.content {
+	width: -webkit-calc(68% - 52px - 20px); /* Safari 6 */
+	width: calc(68% - 52px - 20px);
 }
 
-.action-new {
+.controls {
 	padding: 10px;
+	width: 32px;
+	height: 24px;
+	display: inline-block;
+    vertical-align: middle;
 }
 
-.action-delete {
+.item:focus {
+	background: #000;
+}
+
+.spinner {
+	font-family: 'icomoon';
+	font-size: 24px;
+	line-height: 24px;
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-animation: anim-rotate 2s infinite linear;
+	display: inline-block;
+	position: absolute;
+	display: none;
+}
+
+.trash {
+	position: absolute;
+}
+
+form {
 
 }
 
-.action-delete {
-	opacity: 0;
-	-webkit-transition: opacity .5s ease;
-	-moz-transition: opacity .5s ease;
-    -ms-transition: opacity .5s ease;
-    -o-transition: opacity .5s ease;
-	transition: opacity .5s ease;
-	transition-delay: 20;
-	-webkit-transition-delay: 20; /* Safari */
-}
-
-.item:hover .action-delete,
-.item:active .action-delete,
-html.touch .action-delete {
-	opacity: 1;
-}
-
-html.touch .action-move, 
-html.touch .action-delete,
-html.touch .action-new {
-	font-size: 32px;
-	line-height: 32px;
-}
-
-input {
+input, textarea {
 	border: none;
 	outline: none;
 	font-size: inherit;
 	color: inherit;
+	width: auto;
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
-input[type='submit'] {
-	visibility: hidden;
-	position: absolute;
+textarea {
+	resize: none;
+}
+
+button {
+  	border: none;
+  	background: transparent;
+  	font-size: 24px;
+  	width: 24px;
+  	height: 24px;
+  	line-height: 24px;
+  	vertical-align: middle;
+  	padding: 0;
+  	margin: 0;
+  	display: inline-block;
+  	color: #585858;
+	cursor: pointer;
 }
 
 /*=Icons vis IcoMoon
@@ -211,3 +235,15 @@ input[type='submit'] {
 	font-size: 32px;
 	line-height: 32px;
 }
+
+@-webkit-keyframes anim-rotate {
+	0% {
+		-webkit-transform: rotate(0);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+
+

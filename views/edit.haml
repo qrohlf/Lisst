@@ -5,13 +5,21 @@
     %p
         %a{href: "/logout"} log out?
 .item.new
-    %form#form-new(action="/" method="post")
-        .detail.title
-            %input(type="text" name="title" placeholder="New Item")
-        .detail.content
-            %input(type="text" name="content" placeholder="Description")
-        %input(type="submit")
+    .detail.title
+        %input(type="text" name="title" placeholder="New Item" form="new")
+    .detail.content
+        %input(type="text" name="content" placeholder="Description" form="new")
+    .controls
+        %form{action: "/", method: "post", id: "new"}
+            %button{type: "submit", :'data-icon' => "m", form: "new"}
 - @list.each do |item| 
-    .item{'data-line' => item.id}
+    .item.editable{:'data-id' => item.id}
         .detail.title=item.title
         .detail.content=item.content
+        .controls
+            %form{action: "/#{item.id}", method: "post"}
+                %input{type: "hidden", name: "_method", value: "delete"}
+                %button.trash{type: "submit", :'data-icon' => "d", value: ""}
+            %span.spinner s
+%script{src: "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"}
+%script{src: "/edit.js"}

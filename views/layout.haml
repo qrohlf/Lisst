@@ -14,9 +14,3 @@
         %footer 
             %p This site was generated with <a href="https://github.com/qrohlf/Lisst" title="Lisst Source">Lisst</a>.
             %span.px-32(data-icon="a")
-        - if @modernizr != nil
-            %script=@modernizr
-        - if @jquery != nil
-            %script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js")
-        - if @editjs != nil
-            %script=@editjs

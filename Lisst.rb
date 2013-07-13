@@ -6,7 +6,6 @@ require 'uri'
 require './models/ListItem'
 require 'omniauth'
 require 'omniauth-google-oauth2'
-require 'pp'
 
 config_file 'config.yml'
 
@@ -22,7 +21,11 @@ ActiveRecord::Base.establish_connection(
   :encoding => 'utf8'
 )
 
+# Session:Cookie needed by OmniAuth
 use Rack::Session::Cookie
+# MethodOverride for RESTful interface
+use Rack::MethodOverride
+# Use OmniAuth Google Strategy
 use OmniAuth::Builder do
   provider :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"],
     {
@@ -33,25 +36,39 @@ use OmniAuth::Builder do
     }
 end
 
+# load title and data before methods that need it
 before :method => 'get' do
 	@title = settings.title
 	@list = ListItem.all(order: 'id DESC')
 end
 
+# the homepage
 get '/' do
   haml :index
 end
 
+# the editing page. 
 get '/edit' do
     redirect("/unauthorized") unless can_edit
     @auth = session[:auth]
-    @jquery = true
 	haml :edit
 end
 
 post '/' do
+  redirect("/unauthorized") unless can_edit
 	ListItem.create(params)
 	redirect("/edit")
+end
+
+delete '/:item' do
+  redirect("/unauthorized") unless can_edit
+  ListItem.find(params[:item]).destroy
+  redirect("/edit", 303)
+end
+
+put '/:id' do |id|
+  ListItem.update(id, {title: params[:title], content: params[:content]})
+  "success"
 end
 
 get '/auth/google_oauth2/callback' do
