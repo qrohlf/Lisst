@@ -44,21 +44,15 @@
 <ul>
 <li>Responsive retina-ready stylesheet</li>
 
-<li>Google authentication</li>
+<li>Google authentication for editing</li>
+
+<li>Save-as-you-type</li>
+
+<li>Interface optimized for mobile and desktop use</li>
 
 <li>Postgres or SQLite3 databases supported out of the box</li>
 
 <li>Easily extendable (built with Sinatra, ActiveRecord, and OmniAuth)</li>
-</ul>
-
-<h3 id='todo'>To-do</h3>
-
-<ul>
-<li>delete list items</li>
-
-<li>edit list items</li>
-
-<li>mobile-friendly list item adding</li>
 </ul>
 
 <h3 id='getting_started'>Getting Started</h3>
@@ -66,12 +60,21 @@
 <p>Tools needed: git, ruby 2.0, bundler, sqlite3</p>
 
 <pre><code>$ git clone https://github.com/qrohlf/Lisst.git
+$ echo &quot;    - you@example.com&quot; &gt;&gt; config.yml
 $ bundle install
 $ export DATABASE_URL=&quot;sqlite3:///lisst.db&quot; GOOGLE_SECRET=&quot;YOUR-GOOGLE-CLIENT-SECRET&quot; GOOGLE_KEY=&quot;YOUR-GOOGLE-CLIENT-ID&quot;
 $ rake db:migrate
 $ ruby Lisst.rb</code></pre>
 
 <p>Google API credentials can be obtained from https://code.google.com/apis/console/</p>
+
+<p>To start editing, make sure that your email is specified in config.yml as shown below and that your google secret and key are set correctly, then navigate to <code>/edit</code></p>
+
+<p>config.yml should look like this</p>
+
+<pre><code>title: Your Cool Title
+can_edit:
+    - your_email@example.com</code></pre>
 
 <h3 id='authors_and_contributors'>Authors and Contributors</h3>
 
