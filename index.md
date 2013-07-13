@@ -16,6 +16,11 @@ I created Lisst because I needed an online trip log that was easy to update whil
 - Postgres or SQLite3 databases supported out of the box
 - Easily extendable (built with Sinatra, ActiveRecord, and OmniAuth)
 
+### To-Do
+- Live demo that allows users to try out the edit interface
+- Better documentation on setting up Google Auth
+- Documentation on how to run on Heroku
+
 ### Getting Started
 Tools needed: git, ruby 2.0, bundler, sqlite3
 
