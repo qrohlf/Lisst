@@ -4,7 +4,7 @@ $(document).ready(function() {
   $(".editable .detail").keyup(function(event) {
         var div = $(this).parent();
         window.clearTimeout(div.data('timer'));
-        var timer = setTimeout(function() {updateItem(div);}, 1000);
+        var timer = setTimeout(function() {updateItem(div);}, 500);
         div.data('timer', timer);
     });
 

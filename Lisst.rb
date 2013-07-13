@@ -67,6 +67,7 @@ delete '/:item' do
 end
 
 put '/:id' do |id|
+  redirect("/unauthorized") unless can_edit
   ListItem.update(id, {title: params[:title], content: params[:content]})
   "success"
 end
