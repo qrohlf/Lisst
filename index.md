@@ -5,8 +5,10 @@ layout: index
 ### Why?
 I created Lisst because I needed an online trip log that was easy to update while I'm on the go. It's designed with simplicity and minimalism in mind, and can be run easily on Heroku.
 
-### Demo
-[http://whereis.qrohlf.com](http://whereis.qrohlf.com)
+### Live Demo
+There is a sandboxed version of Lisst running at [http://lisst-demo.herokuapp.com/edit](http://lisst-demo.herokuapp.com/edit) that does not require a login. 
+
+You can also see trip log that prompted me to write Lisst at [http://whereis.qrohlf.com](http://whereis.qrohlf.com)
 
 ### Features
 - Responsive retina-ready stylesheet
